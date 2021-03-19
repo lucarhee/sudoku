@@ -21,6 +21,8 @@
 # TODO: 컴퓨터가 풀게 한다.
 # TODO: 사람이 풀 수 있게 만들어 본다. (ncurses)
 # TODO: 옵션을 달 수 있도록 만든다.
+# TODO: 기능을 모두 구현한다. 그 뒤에 고급개념을 적용한다. 좋은 알고리즘이 있는지 연구한다.
+
 
 import random
 
@@ -196,6 +198,7 @@ def exchangeRowLines(s):
     print(f"{m+rows}번째 줄과 {n+rows}번째 줄을 바꿨어요....")
     return s
 
+
 def randomize(s):
     """
     * h=horizontal(0), v=vertical(1)
@@ -236,6 +239,7 @@ def generateSudoku(s):
                 break
     return s
 
+
 def printSudoku(s):
     print(" -------" * 3)
     for i in range(9):
@@ -251,14 +255,15 @@ def printSudoku(s):
         else:
             print('')
 
-def solver(s):
+
+def solveSudoku(s, computer=True):
     # 가장 윗 줄부터 채워나간다.
     # 각 칸에 올 수 있는 수의 조합을 기억한다
     # checkRow
     # checkCell
     # checkColumn
     # 이걸 반복하면 되지 않을까?
-
+    pass
 
 
 
@@ -267,8 +272,10 @@ if __name__ == '__main__':
     # make a sudoku
     s = initSudoku() # 수도쿠 기본형을 만듬
     solution = copy.deepcopy(randomize(s)) # 모두 채워진 수도쿠를 만듬
+    problem = copy.deepcopy(solution)
+    problem = generateSudoku(problem) # 17개 이상의 숫자만 남기고 문제를 만듬
+
     printSudoku(solution)
-    problem = copy.deepcopy(generateSudoku(solution)) # 17개 이상의 숫자만 남기고 문제를 만듬
     printSudoku(problem)
     #  if solver(problem):
         #  printSudoku(problem)
